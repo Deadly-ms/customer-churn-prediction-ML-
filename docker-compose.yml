@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+
+  backend:
+
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+
+    container_name: churn-backend
+
+    ports:
+      - "5050:5050"
+
+    volumes:
+      - .:/app
+
+    working_dir: /app/backend
+
+    command: python app.py
+
+  frontend:
+
+    build:
+      context: ./frontend
+
+    container_name: churn-frontend
+
+    ports:
+      - "5173:5173"
+
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+    command: npm run dev -- --host
+
+    depends_on:
+      - backend
