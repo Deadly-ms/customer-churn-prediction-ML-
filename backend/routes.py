@@ -8,8 +8,8 @@ api = Blueprint("api", __name__)
 predictor = ChurnPredictionService()
 
 
-@api.route("/", methods=["GET"])
-def home():
+@api.route("/health", methods=["GET"])
+def health():
     """
     Health check endpoint.
     """

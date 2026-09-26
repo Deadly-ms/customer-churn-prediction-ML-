@@ -1,8 +1,10 @@
 venv
 __pycache__
 *.pyc
-node_modules
+**/node_modules
+**/dist
 dist
+node_modules
 .git
 .gitignore
 
